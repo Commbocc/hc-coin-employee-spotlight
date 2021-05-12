@@ -19,19 +19,16 @@
   <div v-else class="alert alert-warning" role="alert">
     No categories to show at this time.
   </div>
-
-  <!-- remove in production -->
-  <pre>{{ categories }}</pre>
 </template>
 
 <script>
-import { categories, fetchCategories } from '../../lib/categories'
+import { categories, fetchCategories } from "../../lib/categories";
 
 export default {
   setup() {
-    fetchCategories()
+    fetchCategories();
 
-    return { categories }
+    return { categories };
   },
-}
+};
 </script>
