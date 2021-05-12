@@ -1,44 +1,44 @@
-import { reactive } from 'vue'
-import airtable from './airtable'
+import { reactive } from "vue";
+import airtable from "./airtable";
 
 // index
 export const categories = reactive({
-  error: '',
+  error: "",
   loading: false,
   data: [],
-})
+});
 
 export async function fetchCategories() {
-  categories.loading = true
+  categories.loading = true;
   try {
     const { data } = await airtable.get(`/categories`, {
       params: {
-        // view: 'Grid view',
+        view: "Grid view",
       },
-    })
-    categories.data = data.records
+    });
+    categories.data = data.records;
   } catch (error) {
-    categories.error = error.message
+    categories.error = error.message;
   } finally {
-    categories.loading = false
+    categories.loading = false;
   }
 }
 
 // show
 export const category = reactive({
-  error: '',
+  error: "",
   loading: false,
   data: {},
-})
+});
 
 export async function fetchCategory(id) {
-  category.loading = true
+  category.loading = true;
   try {
-    const { data } = await airtable.get(`/categories/${id}`)
-    category.data = data
+    const { data } = await airtable.get(`/categories/${id}`);
+    category.data = data;
   } catch (error) {
-    category.error = error.message
+    category.error = error.message;
   } finally {
-    category.loading = false
+    category.loading = false;
   }
 }
